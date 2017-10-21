@@ -53,7 +53,6 @@ class Search extends Component {
 
   selectVenue(venue, event) {
     event.preventDefault()
-    console.log('selectVenue: ' + JSON.stringify(venue))
     this.props.selectVenue(venue)
   }
 

@@ -10,7 +10,6 @@ export default (state = initialState, action) => {
   switch (action.type) {
 
     case constants.SELECT_VENUE:
-      console.log('SELECT_VENUE: ' + JSON.stringify(action.data))
       newState['selectedVenue'] = action.data
       return newState
 
