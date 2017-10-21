@@ -24,8 +24,6 @@ class Search extends Component {
   }
 
   searchVenues() {
-    console.log('searchVenues: ' + JSON.stringify(this.state.search))
-
     const url = 'https://api.foursquare.com/v2/venues/search'
 
     const params = {
@@ -46,7 +44,6 @@ class Search extends Component {
         return
       }
 
-      console.log(JSON.stringify(data.body.response.venues))
       this.setState({
         venues: data.body.response.venues
       })
