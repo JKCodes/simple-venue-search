@@ -29,8 +29,8 @@ class Search extends Component {
 
     const params = {
       v: '20140806',
-      near: 'new+york,ny',
-      query: 'coffee',
+      near: this.state.search.location,
+      query: this.state.search.query,
       client_id: 'VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD',
       client_secret: 'UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ'
     }
