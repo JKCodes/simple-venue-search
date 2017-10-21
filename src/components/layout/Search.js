@@ -6,6 +6,7 @@ class Search extends Component {
   constructor() {
     super()
     this.state = {
+      venues: [],
       search: {
         location: '',
         query: ''
@@ -46,6 +47,9 @@ class Search extends Component {
       }
 
       console.log(JSON.stringify(data.body.response.venues))
+      this.setState({
+        venues: data.body.response.venues
+      })
     })
   }
 
@@ -58,6 +62,15 @@ class Search extends Component {
             <input onChange={this.updateSearchFilters.bind(this, 'query')} type="text" placeholder="Query" /><br />
             <input onChange={this.updateSearchFilters.bind(this, 'location')} type="text" placeholder="Location" /><br />
             <button onClick={this.searchVenues.bind(this)}>Search</button>
+
+            <hr />
+            <h3>Venues</h3>
+            <ol>
+              { this.state.venues.map((venue, i) => {
+                  return <li key={venue.id}>{venue.name}</li>
+                })
+              }
+            </ol>
           </div>
 
           <div className="col-md-8">
