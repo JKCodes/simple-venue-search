@@ -82,7 +82,9 @@ class Search extends Component {
           </div>
 
           <div className="col-md-8">
-            
+            <h2>
+            {(this.props.venue.selectedVenue) ? this.props.venue.selectedVenue.name : 'No Venue'}
+            </h2>
           </div>  
         </div>
       </div>
@@ -98,7 +100,7 @@ const stateToProps = (state) => {
 
 const dispatchToProps = (dispatch) => {
   return {
-    selectVenue: () => dispatch(actions.selectVenue(venue))
+    selectVenue: (venue) => dispatch(actions.selectVenue(venue))
   }
 }
 
