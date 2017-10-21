@@ -12,8 +12,8 @@ class Search extends Component {
     }
   }
 
-  updateSearchFilters(event) {
-    console.log('updateSearchFilters: ' + event.target.value)
+  updateSearchFilters(field, event) {
+    console.log('updateSearchFilters: ' + field + ' == '+ event.target.value)
   }
 
   render() {
@@ -22,8 +22,8 @@ class Search extends Component {
         <div className="row">
           <div className="col-md-4">
             <h3>Search Venues</h3>
-            <input onChange={this.updateSearchFilters.bind(this)} type="text" placeholder="Query" /><br />
-            <input onChange={this.updateSearchFilters.bind(this)} type="text" placeholder="Location" /><br />
+            <input onChange={this.updateSearchFilters.bind(this, 'query')} type="text" placeholder="Query" /><br />
+            <input onChange={this.updateSearchFilters.bind(this, 'location')} type="text" placeholder="Location" /><br />
             <button>Search</button>
           </div>
 
