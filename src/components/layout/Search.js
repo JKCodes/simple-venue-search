@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import superagent from 'superagent'
 
 class Search extends Component {
 
@@ -23,6 +24,29 @@ class Search extends Component {
 
   searchVenues() {
     console.log('searchVenues: ' + JSON.stringify(this.state.search))
+
+    const url = 'https://api.foursquare.com/v2/venues/search'
+
+    const params = {
+      v: '20140806',
+      near: 'new+york,ny',
+      query: 'coffee',
+      client_id: 'VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD',
+      client_secret: 'UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ'
+    }
+
+    superagent
+    .get(url)
+    .query(params)
+    .set('Accept', 'application/json')
+    .end((err, data) => {
+      if (err) {
+        alert('OOPS: ' + err.message)
+        return
+      }
+
+      console.log(JSON.stringify(data.body.response.venues))
+    })
   }
 
   render() {
