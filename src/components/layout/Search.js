@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import superagent from 'superagent'
+import actions from '../../actions'
+import { connect } from 'react-redux'
 
 class Search extends Component {
 
@@ -87,4 +89,16 @@ class Search extends Component {
   }
 }
 
-export default Search
+const stateToProps = (state) => {
+  return {
+    venue: state.venue
+  }
+}
+
+const dispatchToProps = (dispatch) => {
+  return {
+    selectVenue: () => dispatch(actions.selectVenue(venue))
+  }
+}
+
+export default connect(stateToProps, dispatchToProps)(Search)
