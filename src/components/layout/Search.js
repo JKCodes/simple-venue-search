@@ -15,7 +15,6 @@ class Search extends Component {
   }
 
   updateSearchFilters(field, event) {
-    console.log('updateSearchFilters: ' + field + ' == '+ event.target.value)
     let search = Object.assign({}, this.state.search)
     search[field] = event.target.value
     this.setState({
@@ -50,6 +49,11 @@ class Search extends Component {
     })
   }
 
+  selectVenue(venue, event) {
+    event.preventDefault()
+    console.log('selectVenue: ' + JSON.stringify(venue))
+  }
+
   render() {
     return (
       <div className="container">
@@ -64,7 +68,11 @@ class Search extends Component {
             <h3>Venues</h3>
             <ol>
               { this.state.venues.map((venue, i) => {
-                  return <li key={venue.id}>{venue.name}</li>
+                  return (
+                    <li key={venue.id}>
+                      <a onClick={this.selectVenue.bind(this, venue)} href="#">{venue.name}</a>
+                    </li>
+                  )
                 })
               }
             </ol>
