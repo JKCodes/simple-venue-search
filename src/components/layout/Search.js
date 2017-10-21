@@ -14,6 +14,15 @@ class Search extends Component {
 
   updateSearchFilters(field, event) {
     console.log('updateSearchFilters: ' + field + ' == '+ event.target.value)
+    let search = Object.assign({}, this.state.search)
+    search[field] = event.target.value
+    this.setState({
+      search: search
+    })
+  }
+
+  searchVenues() {
+    console.log('searchVenues: ' + JSON.stringify(this.state.search))
   }
 
   render() {
@@ -24,7 +33,7 @@ class Search extends Component {
             <h3>Search Venues</h3>
             <input onChange={this.updateSearchFilters.bind(this, 'query')} type="text" placeholder="Query" /><br />
             <input onChange={this.updateSearchFilters.bind(this, 'location')} type="text" placeholder="Location" /><br />
-            <button>Search</button>
+            <button onClick={this.searchVenues.bind(this)}>Search</button>
           </div>
 
           <div className="col-md-8">
